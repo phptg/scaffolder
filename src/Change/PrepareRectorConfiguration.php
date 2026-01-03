@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Phptg\Scaffolder\Change;
 
-use Composer\Semver\Constraint\Constraint;
 use Vjik\Scaffolder\Change;
 use Vjik\Scaffolder\Cli;
 use Vjik\Scaffolder\Context;
-use Vjik\Scaffolder\Fact\PhpConstraint;
+use Vjik\Scaffolder\Fact\LowestMinorPhpVersion;
+use Vjik\Scaffolder\Value\MinorPhpVersion;
 
 use function dirname;
 use function sprintf;
@@ -45,16 +45,14 @@ final readonly class PrepareRectorConfiguration implements Change
 
     private function getPhpSet(Context $context): ?string
     {
-        $constraint = $context->getFact(PhpConstraint::class);
+        $phpVersion = $context->getFact(LowestMinorPhpVersion::class);
 
-        return array_find_key(
-            [
-                'php82' => '8.2.9999999',
-                'php83' => '8.3.9999999',
-                'php84' => '8.4.9999999',
-                'php85' => '8.5.9999999',
-            ],
-            static fn($version) => $constraint->matches(new Constraint('==', $version))
-        );
+        return match ($phpVersion) {
+            MinorPhpVersion::PHP82 => 'php82',
+            MinorPhpVersion::PHP83 => 'php83',
+            MinorPhpVersion::PHP84 => 'php84',
+            MinorPhpVersion::PHP85 => 'php85',
+            default => null,
+        };
     }
 }
