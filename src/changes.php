@@ -14,7 +14,6 @@ $files = dirname(__DIR__) . '/files';
 
 return [
     new PrepareComposerJson(
-        prepareAutoloadDev: false,
         customChange: static function (array &$new, Context $context): void {
             $project = $context->getFact(PackageProject::class);
             $new['support'] = [

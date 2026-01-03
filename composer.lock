@@ -881,12 +881,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/vjik/scaffolder.git",
-                "reference": "ce553d28f550cebd897233a3b16ef44290518bd7"
+                "reference": "3a99674c7a6e2b341f067f655241de38e0ca3b70"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vjik/scaffolder/zipball/ce553d28f550cebd897233a3b16ef44290518bd7",
-                "reference": "ce553d28f550cebd897233a3b16ef44290518bd7",
+                "url": "https://api.github.com/repos/vjik/scaffolder/zipball/3a99674c7a6e2b341f067f655241de38e0ca3b70",
+                "reference": "3a99674c7a6e2b341f067f655241de38e0ca3b70",
                 "shasum": ""
             },
             "require": {
@@ -921,7 +921,7 @@
                 "issues": "https://github.com/vjik/scaffolder/issues",
                 "source": "https://github.com/vjik/scaffolder/tree/master"
             },
-            "time": "2026-01-03T17:04:36+00:00"
+            "time": "2026-01-03T18:52:04+00:00"
         },
         {
             "name": "yiisoft/strings",
