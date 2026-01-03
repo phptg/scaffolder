@@ -18,6 +18,9 @@
         "php": "^8.4",
         "vjik/scaffolder": "dev-master"
     },
+    "require-dev": {
+        "rector/rector": "^2.3"
+    },
     "autoload": {
         "psr-4": {
             "Phptg\\Scaffolder\\": "src/"
@@ -26,5 +29,8 @@
     "config": {
         "bump-after-update": true,
         "sort-packages": true
+    },
+    "scripts": {
+        "rector": "rector"
     }
 }

@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Phptg\Scaffolder\Change\PrepareRectorConfiguration;
 use Vjik\Scaffolder\Change\CopyFile;
 use Vjik\Scaffolder\Change\PrepareComposerJson;
 use Vjik\Scaffolder\Change\WriteLicense\Bsd3ClauseLicense;
@@ -14,17 +15,22 @@ $files = dirname(__DIR__) . '/files';
 return [
     new PrepareComposerJson(
         prepareAutoloadDev: false,
-        customChange: static function (array &$composerJson, Context $context): void {
+        customChange: static function (array &$new, Context $context): void {
             $project = $context->getFact(PackageProject::class);
-            $composerJson['support'] = [
+            $new['support'] = [
                 'issues' => "https://github.com/phptg/$project/issues?state=open",
                 'chat' => 'https://t.me/predvoditelev_chat',
                 'source' => "https://github.com/phptg/$project",
             ];
+
+            // Rector
+            $new['require-dev']['rector/rector'] ??= '^2.3.0';
+            $new['scripts']['rector'] = 'rector';
         }
     ),
     new WriteLicense(
         new Bsd3ClauseLicense('Sergei Predvoditelev'),
     ),
     new CopyFile($files . '/.editorconfig', '.editorconfig'),
+    new PrepareRectorConfiguration(),
 ];
