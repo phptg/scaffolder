@@ -37,7 +37,6 @@ final readonly class PrepareRectorConfiguration implements Change
             return null;
         }
 
-
         return static fn(Cli $cli) => $cli->step(
             sprintf('Write `%s`', self::FILE),
             fn() => $context->writeTextFile(self::FILE, $new),

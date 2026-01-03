@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Phptg\Scaffolder\Change\PrepareReadme;
 use Phptg\Scaffolder\Change\PrepareRectorConfiguration;
 use Vjik\Scaffolder\Change\CopyFile;
 use Vjik\Scaffolder\Change\PrepareComposerJson;
@@ -32,4 +33,9 @@ return [
     ),
     new CopyFile($files . '/.editorconfig', '.editorconfig'),
     new PrepareRectorConfiguration(),
+    'readme' => [
+        new PrepareReadme(),
+        new CopyFile($files . '/logo.png', 'logo.png'),
+    ],
+    'docs-internals' => new CopyFile($files . '/docs/internals.md', 'docs/internals.md'),
 ];
