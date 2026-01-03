@@ -2,9 +2,11 @@
 
 declare(strict_types=1);
 
+use Phptg\Scaffolder\Change\PrepareGitignore;
 use Phptg\Scaffolder\Change\PrepareReadme;
 use Phptg\Scaffolder\Change\PrepareRectorConfiguration;
 use Vjik\Scaffolder\Change\CopyFile;
+use Vjik\Scaffolder\Change\CopyFileIfNotExists;
 use Vjik\Scaffolder\Change\PrepareComposerJson;
 use Vjik\Scaffolder\Change\WriteLicense\Bsd3ClauseLicense;
 use Vjik\Scaffolder\Change\WriteLicense\WriteLicense;
@@ -26,8 +28,15 @@ return [
             // Rector
             $new['require-dev']['rector/rector'] ??= '^2.3.0';
             $new['scripts']['rector'] = 'rector';
+
+            // PHPUnit
+            if ($context->getParam('phpunit', true)) {
+                $new['require-dev']['phpunit/phpunit'] ??= '^11.5.46';
+            }
         }
     ),
+    new PrepareGitignore(),
+    new CopyFile($files . '/runtime/.gitignore', 'runtime/.gitignore'),
     new WriteLicense(
         new Bsd3ClauseLicense('Sergei Predvoditelev'),
     ),
@@ -38,4 +47,5 @@ return [
         new CopyFile($files . '/logo.png', 'logo.png'),
     ],
     'docs-internals' => new CopyFile($files . '/docs/internals.md', 'docs/internals.md'),
+    'phpunit-configuration' => new CopyFileIfNotExists($files . '/phpunit.xml.dist', 'phpunit.xml.dist')
 ];
