@@ -1,12 +1,30 @@
 {
     "name": "phptg/scaffolder",
+    "description": "PHPTG Scaffolder",
+    "license": "BSD-3-Clause",
     "type": "project",
+    "authors": [
+        {
+            "name": "Sergei Predvoditelev",
+            "email": "sergei@predvoditelev.ru"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/phptg/scaffolder/issues?state=open",
+        "chat": "https://t.me/predvoditelev_chat",
+        "source": "https://github.com/phptg/scaffolder"
+    },
     "require": {
+        "php": "^8.4",
         "vjik/scaffolder": "dev-master"
     },
     "autoload": {
         "psr-4": {
             "Phptg\\Scaffolder\\": "src/"
         }
+    },
+    "config": {
+        "bump-after-update": true,
+        "sort-packages": true
     }
 }
