@@ -7,6 +7,7 @@ use Phptg\Scaffolder\Change\PrepareDocsInternals;
 use Phptg\Scaffolder\Change\PrepareGitHubWorkflowBuild;
 use Phptg\Scaffolder\Change\PrepareGitHubWorkflowComposerDependencyAnalyser;
 use Phptg\Scaffolder\Change\PrepareGitHubWorkflowMutation;
+use Phptg\Scaffolder\Change\PrepareGitHubWorkflowPhpstan;
 use Phptg\Scaffolder\Change\PrepareGitHubWorkflowPsalm;
 use Phptg\Scaffolder\Change\PrepareGitignore;
 use Phptg\Scaffolder\Change\PrepareReadme;
@@ -120,7 +121,10 @@ return [
         UsePsalm::class,
     ),
     new ChangeIf(
-        new CopyFileIfNotExists($files . '/phpstan.neon', 'phpstan.neon'),
+        [
+            new CopyFileIfNotExists($files . '/phpstan.neon', 'phpstan.neon'),
+            new PrepareGitHubWorkflowPhpstan(),
+        ],
         UsePhpStan::class,
     ),
     new ChangeIf(
