@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4e9945344ab966120fc8a21a7cdc7738",
+    "content-hash": "ab723301ceee3c5734dbd1beeacc50e7",
     "packages": [
         {
             "name": "composer/semver",
@@ -877,31 +877,39 @@
         },
         {
             "name": "vjik/scaffolder",
-            "version": "dev-master",
+            "version": "0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vjik/scaffolder.git",
-                "reference": "e46a28d0b531decd8162c83d015827f3f06bff54"
+                "reference": "7cd20d3227c44a7f2326fee39ae0987cf663dc7d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vjik/scaffolder/zipball/e46a28d0b531decd8162c83d015827f3f06bff54",
-                "reference": "e46a28d0b531decd8162c83d015827f3f06bff54",
+                "url": "https://api.github.com/repos/vjik/scaffolder/zipball/7cd20d3227c44a7f2326fee39ae0987cf663dc7d",
+                "reference": "7cd20d3227c44a7f2326fee39ae0987cf663dc7d",
                 "shasum": ""
             },
             "require": {
-                "composer/semver": "^3.4",
-                "php": "8.4.*",
-                "symfony/console": "^8",
-                "symfony/filesystem": "^8.0",
+                "composer/semver": "^3.4.4",
+                "ext-filter": "*",
+                "php": "~8.4.0",
+                "symfony/console": "^8.0.3",
+                "symfony/filesystem": "^8.0.1",
                 "yiisoft/strings": "^2.7"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^3.92",
-                "phpstan/phpstan": "^2.1"
+                "bamarni/composer-bin-plugin": "^1.8.3",
+                "phpstan/phpstan": "^2.1.33",
+                "rector/rector": "^2.3"
             },
-            "default-branch": true,
             "type": "library",
+            "extra": {
+                "bamarni-bin": {
+                    "bin-links": true,
+                    "forward-command": true,
+                    "target-directory": "tools"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Vjik\\Scaffolder\\": "src/"
@@ -917,11 +925,13 @@
                     "email": "sergei@predvoditelev.ru"
                 }
             ],
+            "description": "PHP Scaffolder Library",
             "support": {
-                "issues": "https://github.com/vjik/scaffolder/issues",
-                "source": "https://github.com/vjik/scaffolder/tree/master"
+                "chat": "https://t.me/predvoditelev_chat",
+                "issues": "https://github.com/vjik/scaffolder/issues?state=open",
+                "source": "https://github.com/vjik/scaffolder"
             },
-            "time": "2026-01-04T15:31:22+00:00"
+            "time": "2026-01-04T17:48:25+00:00"
         },
         {
             "name": "yiisoft/strings",
@@ -1168,9 +1178,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "vjik/scaffolder": 20
-    },
+    "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
