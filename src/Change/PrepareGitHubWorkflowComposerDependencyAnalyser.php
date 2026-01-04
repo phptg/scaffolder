@@ -13,9 +13,9 @@ use Vjik\Scaffolder\Value\MinorPhpVersion;
 use function dirname;
 use function sprintf;
 
-final readonly class PrepareGitHubWorkflowBuild implements Change
+final readonly class PrepareGitHubWorkflowComposerDependencyAnalyser implements Change
 {
-    private const FILE = '.github/workflows/build.yml';
+    private const FILE = '.github/workflows/composer-dependency-analyser.yml';
 
     public function decide(Context $context): callable|array|null
     {

@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Phptg\Scaffolder\Change\PrepareChangelog;
 use Phptg\Scaffolder\Change\PrepareDocsInternals;
 use Phptg\Scaffolder\Change\PrepareGitHubWorkflowBuild;
+use Phptg\Scaffolder\Change\PrepareGitHubWorkflowComposerDependencyAnalyser;
 use Phptg\Scaffolder\Change\PrepareGitignore;
 use Phptg\Scaffolder\Change\PrepareReadme;
 use Phptg\Scaffolder\Change\PrepareRectorConfiguration;
@@ -130,6 +131,7 @@ return [
         [
             new CopyFileIfNotExists($files . '/tools/composer-dependency-analyser/composer.json', 'tools/composer-dependency-analyser/composer.json'),
             new CopyFileIfNotExists($files . '/composer-dependency-analyser.php', 'composer-dependency-analyser.php'),
+            new PrepareGitHubWorkflowComposerDependencyAnalyser(),
         ],
         UseComposerDependencyAnalyser::class,
     ),
