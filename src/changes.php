@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Phptg\Scaffolder\Change\PrepareChangelog;
 use Phptg\Scaffolder\Change\PrepareDocsInternals;
+use Phptg\Scaffolder\Change\PrepareGitHubWorkflowBuild;
 use Phptg\Scaffolder\Change\PrepareGitignore;
 use Phptg\Scaffolder\Change\PrepareReadme;
 use Phptg\Scaffolder\Change\PrepareRectorConfiguration;
@@ -101,7 +102,10 @@ return [
     new PrepareChangelog(),
     new CopyFile($files . '/tools/.gitignore', 'tools/.gitignore'),
     new ChangeIf(
-        new CopyFileIfNotExists($files . '/phpunit.xml.dist', 'phpunit.xml.dist'),
+        [
+            new CopyFileIfNotExists($files . '/phpunit.xml.dist', 'phpunit.xml.dist'),
+            new PrepareGitHubWorkflowBuild(),
+        ],
         UsePhpUnit::class,
     ),
     new ChangeIf(
