@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Phptg\Scaffolder\Change\PrepareGitignore;
 use Phptg\Scaffolder\Change\PrepareReadme;
 use Phptg\Scaffolder\Change\PrepareRectorConfiguration;
+use Phptg\Scaffolder\Fact\UseComposerDependencyAnalyser;
 use Phptg\Scaffolder\Fact\UsePhpCsFixer;
 use Phptg\Scaffolder\Fact\UsePhpStan;
 use Phptg\Scaffolder\Fact\UsePhpUnit;
@@ -64,6 +65,11 @@ return [
                 $new['scripts']['cs-fix'] ??= 'php-cs-fixer fix';
             }
 
+            // Composer Dependency Analyser
+            if ($context->getFact(UseComposerDependencyAnalyser::class)) {
+                $new['scripts']['dependency-analyser'] ??= 'composer-dependency-analyser';
+            }
+
             return $new;
         },
     ),
@@ -101,5 +107,12 @@ return [
             new CopyFileIfNotExists($files . '/.php-cs-fixer.dist.php', '.php-cs-fixer.dist.php'),
         ],
         UsePhpCsFixer::class,
+    ),
+    new ChangeIf(
+        [
+            new CopyFileIfNotExists($files . '/tools/composer-dependency-analyser/composer.json', 'tools/composer-dependency-analyser/composer.json'),
+            new CopyFileIfNotExists($files . '/composer-dependency-analyser.php', 'composer-dependency-analyser.php'),
+        ],
+        UseComposerDependencyAnalyser::class,
     ),
 ];

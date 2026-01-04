@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Phptg\Scaffolder\Fact;
 
 return [
+    Fact\UseComposerDependencyAnalyser::class,
     Fact\UsePhpCsFixer::class,
     Fact\UsePhpStan::class,
     Fact\UsePhpUnit::class,

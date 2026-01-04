@@ -16,6 +16,8 @@
     },
     "require": {
         "php": "^8.4",
+        "ext-filter": "*",
+        "symfony/console": "^8.0.3",
         "vjik/scaffolder": "dev-master"
     },
     "require-dev": {
@@ -44,6 +46,7 @@
     },
     "scripts": {
         "cs-fix": "php-cs-fixer fix",
+        "dependency-analyser": "composer-dependency-analyser",
         "phpstan": "phpstan analyse -c phpstan.neon",
         "rector": "rector"
     }
