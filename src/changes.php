@@ -7,6 +7,7 @@ use Phptg\Scaffolder\Change\PrepareDocsInternals;
 use Phptg\Scaffolder\Change\PrepareGitHubWorkflowBuild;
 use Phptg\Scaffolder\Change\PrepareGitHubWorkflowComposerDependencyAnalyser;
 use Phptg\Scaffolder\Change\PrepareGitHubWorkflowMutation;
+use Phptg\Scaffolder\Change\PrepareGitHubWorkflowPsalm;
 use Phptg\Scaffolder\Change\PrepareGitignore;
 use Phptg\Scaffolder\Change\PrepareReadme;
 use Phptg\Scaffolder\Change\PrepareRectorConfiguration;
@@ -114,6 +115,7 @@ return [
         [
             new CopyFileIfNotExists($files . '/tools/psalm/composer.json', 'tools/psalm/composer.json'),
             new CopyFileIfNotExists($files . '/psalm.xml', 'psalm.xml'),
+            new PrepareGitHubWorkflowPsalm(),
         ],
         UsePsalm::class,
     ),
