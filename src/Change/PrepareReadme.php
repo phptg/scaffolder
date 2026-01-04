@@ -7,9 +7,12 @@ namespace Phptg\Scaffolder\Change;
 use Vjik\Scaffolder\Change;
 use Vjik\Scaffolder\Cli;
 use Vjik\Scaffolder\Context;
+use Vjik\Scaffolder\Fact\HighestMinorPhpVersion;
+use Vjik\Scaffolder\Fact\LowestMinorPhpVersion;
 use Vjik\Scaffolder\Fact\PackageProject;
-use Vjik\Scaffolder\Fact\PhpConstraint;
+use Vjik\Scaffolder\Fact\PhpConstraintName;
 use Vjik\Scaffolder\Fact\Title;
+use Vjik\Scaffolder\Value\MinorPhpVersion;
 
 use function sprintf;
 
@@ -36,7 +39,7 @@ final readonly class PrepareReadme implements Change
     {
         $title = $context->getFact(Title::class);
         $packageProject = $context->getFact(PackageProject::class);
-        $phpConstraint = $context->getFact(PhpConstraint::class)->getPrettyString();
+        $phpConstraint = $this->createPhpConstraint($context);
 
         return <<<README
             <div align="center">
@@ -56,7 +59,7 @@ final readonly class PrepareReadme implements Change
 
             ## Requirements
 
-            - PHP $phpConstraint.
+            - $phpConstraint.
 
             ## Installation
 
@@ -81,5 +84,24 @@ final readonly class PrepareReadme implements Change
             The `phptg/$packageProject` is free software. It is released under the terms of the BSD License.
             Please see [`LICENSE`](./LICENSE) for more information.
             README;
+    }
+
+    private function createPhpConstraint(Context $context): string
+    {
+        $result = $context->getFact(PhpConstraintName::class) === 'php-64bit' ? 'PHP (64-bit)' : 'PHP';
+
+        $lowest = $context->getFact(LowestMinorPhpVersion::class);
+        if ($lowest === MinorPhpVersion::UNKNOWN) {
+            return $result;
+        }
+
+        $result .= ' ' . $lowest->value;
+
+        $highest = $context->getFact(HighestMinorPhpVersion::class);
+        if ($highest === MinorPhpVersion::UNKNOWN || $highest === $lowest) {
+            return $result;
+        }
+
+        return $result . ' - ' . $highest->value;
     }
 }
