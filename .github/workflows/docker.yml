@@ -3,7 +3,7 @@ name: Docker Image
 on:
   workflow_dispatch: ~
   workflow_run:
-    workflows: [ "Code Style", "Composer Dependency Analyser", "PHPStan" ]
+    workflows: [ "Composer Dependency Analyser", "PHPStan" ]
     branches: [ "master" ]
     types:
       - completed
