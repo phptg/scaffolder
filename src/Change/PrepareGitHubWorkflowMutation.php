@@ -15,7 +15,7 @@ use function sprintf;
 
 final readonly class PrepareGitHubWorkflowMutation implements Change
 {
-    private const FILE = '.github/workflows/mutation.yml';
+    private const string FILE = '.github/workflows/mutation.yml';
 
     public function decide(Context $context): callable|array|null
     {

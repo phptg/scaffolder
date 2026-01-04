@@ -13,7 +13,7 @@ use function sprintf;
 
 final readonly class PrepareChangelog implements Change
 {
-    private const FILE = 'CHANGELOG.md';
+    private const string FILE = 'CHANGELOG.md';
 
     public function decide(Context $context): callable|array|null
     {

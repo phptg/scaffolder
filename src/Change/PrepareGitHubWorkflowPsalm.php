@@ -15,7 +15,7 @@ use function sprintf;
 
 final readonly class PrepareGitHubWorkflowPsalm implements Change
 {
-    private const FILE = '.github/workflows/psalm.yml';
+    private const string FILE = '.github/workflows/psalm.yml';
 
     public function decide(Context $context): callable|array|null
     {
