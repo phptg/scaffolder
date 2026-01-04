@@ -1,12 +1,53 @@
 {
-    "name": "_____/_____",
+    "name": "phptg/scaffolder",
+    "description": "PHPTG Scaffolder",
+    "license": "BSD-3-Clause",
     "type": "project",
-    "autoload": {
-        "psr-4": {
-            "_____\\": "src/"
+    "authors": [
+        {
+            "name": "Sergei Predvoditelev",
+            "email": "sergei@predvoditelev.ru"
         }
+    ],
+    "support": {
+        "issues": "https://github.com/phptg/scaffolder/issues?state=open",
+        "chat": "https://t.me/predvoditelev_chat",
+        "source": "https://github.com/phptg/scaffolder"
     },
     "require": {
+        "php": "~8.4.0",
+        "ext-filter": "*",
+        "symfony/console": "^8.0.3",
         "vjik/scaffolder": "dev-master"
+    },
+    "require-dev": {
+        "bamarni/composer-bin-plugin": "^1.8.3",
+        "phpstan/phpstan": "^2.1.33",
+        "rector/rector": "^2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Phptg\\Scaffolder\\": "src/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "bamarni/composer-bin-plugin": true
+        },
+        "bump-after-update": true,
+        "sort-packages": true
+    },
+    "extra": {
+        "bamarni-bin": {
+            "bin-links": true,
+            "forward-command": true,
+            "target-directory": "tools"
+        }
+    },
+    "scripts": {
+        "cs-fix": "php-cs-fixer fix",
+        "dependency-analyser": "composer-dependency-analyser",
+        "phpstan": "phpstan analyse -c phpstan.neon",
+        "rector": "rector"
     }
 }
