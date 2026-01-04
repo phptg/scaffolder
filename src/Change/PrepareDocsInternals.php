@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Phptg\Scaffolder\Change;
 
 use Phptg\Scaffolder\Fact\UseComposerDependencyAnalyser;
-use Phptg\Scaffolder\Fact\UsePhpCsFixer;
 use Phptg\Scaffolder\Fact\UsePhpStan;
 use Phptg\Scaffolder\Fact\UsePhpUnit;
 use Phptg\Scaffolder\Fact\UsePsalm;
@@ -74,18 +73,16 @@ final readonly class PrepareDocsInternals implements Change
                 BLOCK;
         }
 
-        if ($context->getFact(UsePhpCsFixer::class)) {
-            $blocks[] = <<<BLOCK
-                ## Code style
+        $blocks[] = <<<BLOCK
+            ## Code style
 
-                Package used [PHP CS Fixer](https://cs.symfony.com/) to maintain [PER CS 3.0](https://www.php-fig.org/per/coding-style/)
-                code style. To check and fix code style:
+            Package used [PHP CS Fixer](https://cs.symfony.com/) to maintain [PER CS 3.0](https://www.php-fig.org/per/coding-style/)
+            code style. To check and fix code style:
 
-                ```shell
-                composer cs-fix
-                ```
-                BLOCK;
-        }
+            ```shell
+            composer cs-fix
+            ```
+            BLOCK;
 
         if ($context->getFact(UseComposerDependencyAnalyser::class)) {
             $blocks[] = <<<BLOCK
