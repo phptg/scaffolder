@@ -22,7 +22,7 @@ final readonly class PrepareRectorConfiguration implements Change
         $original = $context->tryReadFile(self::FILE);
 
         /** @var string $new */
-        $new = $original ?? file_get_contents(dirname(self::FILE, 2) . '/files/' . self::FILE);
+        $new = $original ?? file_get_contents(dirname(__DIR__, 2) . '/files/' . self::FILE);
 
         $phpSet = $this->getPhpSet($context);
         if ($phpSet === null) {

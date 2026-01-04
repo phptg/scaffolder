@@ -8,6 +8,7 @@ use Rector\Php80\Rector\Class_\ClassPropertyAssignToConstructorPromotionRector;
 use Rector\Php81\Rector\ClassMethod\NewInInitializerRector;
 use Rector\Php81\Rector\FuncCall\NullToStrictStringFuncCallArgRector;
 use Rector\Php82\Rector\Param\AddSensitiveParameterAttributeRector;
+use Rector\Php83\Rector\ClassMethod\AddOverrideAttributeToOverriddenMethodsRector;
 
 return RectorConfig::configure()
     ->withPaths([
@@ -26,4 +27,5 @@ return RectorConfig::configure()
         NullToStrictStringFuncCallArgRector::class,
         ClassPropertyAssignToConstructorPromotionRector::class,
         NewInInitializerRector::class,
+        AddOverrideAttributeToOverriddenMethodsRector::class,
     ]);
