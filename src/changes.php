@@ -78,7 +78,7 @@ return [
         },
     ),
     new EnsureDirectoryWithGitkeep(SourceDirectory::class),
-    new EnsureDirectoryWithGitkeep(TestsDirectory::class),
+    'tests-directory' => new EnsureDirectoryWithGitkeep(TestsDirectory::class),
     new PrepareGitignore(),
     new CopyFile($files . '/runtime/.gitignore', 'runtime/.gitignore'),
     new WriteLicense(
