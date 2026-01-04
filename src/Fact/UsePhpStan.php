@@ -14,16 +14,16 @@ use Vjik\Scaffolder\Params;
 /**
  * @extends Fact<bool>
  */
-final class UsePsalm extends Fact
+final class UsePhpStan extends Fact
 {
-    public const string VALUE_OPTION = 'use-psalm';
+    public const string VALUE_OPTION = 'use-phpstan';
 
     public static function configureCommand(SymfonyCommand $command, Params $params): void
     {
         $command->addOption(
             self::VALUE_OPTION,
             mode: InputOption::VALUE_OPTIONAL,
-            default: $params->get(self::VALUE_OPTION, true),
+            default: $params->get(self::VALUE_OPTION, false),
         );
     }
 

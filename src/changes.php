@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Phptg\Scaffolder\Change\PrepareGitignore;
 use Phptg\Scaffolder\Change\PrepareReadme;
 use Phptg\Scaffolder\Change\PrepareRectorConfiguration;
+use Phptg\Scaffolder\Fact\UsePhpStan;
 use Phptg\Scaffolder\Fact\UsePhpUnit;
 use Phptg\Scaffolder\Fact\UsePsalm;
 use Vjik\Scaffolder\Change\ChangeIf;
@@ -20,7 +21,7 @@ $files = dirname(__DIR__) . '/files';
 
 return [
     new PrepareComposerJson(
-        customChange: static function (array &$new, Context $context): void {
+        customChange: static function (array $new, Context $context): array {
             $project = $context->getFact(PackageProject::class);
             $new['support'] = [
                 'issues' => "https://github.com/phptg/$project/issues?state=open",
@@ -46,10 +47,18 @@ return [
                 $new['scripts']['psalm'] = 'psalm';
             }
 
+            // PHPStan
+            if ($context->getFact(UsePhpStan::class)) {
+                $new['require-dev']['phpstan/phpstan'] ??= '^2.1.33';
+                $new['scripts']['phpstan'] = 'phpstan analyse -c phpstan.neon';
+            }
+
             // PHPUnit
             if ($context->getFact(UsePhpUnit::class)) {
                 $new['require-dev']['phpunit/phpunit'] ??= '^11.5.46';
             }
+
+            return $new;
         }
     ),
     new PrepareGitignore(),
@@ -75,5 +84,9 @@ return [
             new CopyFileIfNotExists($files . '/psalm.xml', 'psalm.xml'),
         ],
         UsePsalm::class,
+    ),
+    new ChangeIf(
+        new CopyFileIfNotExists($files . '/phpstan.neon', 'phpstan.neon'),
+        UsePhpStan::class,
     ),
 ];

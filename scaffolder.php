@@ -9,4 +9,5 @@ return [
     'prepare-composer-autoload-dev' => false,
     'use-phpunit' => false,
     'use-psalm' => false,
+    'use-phpstan' => true,
 ];

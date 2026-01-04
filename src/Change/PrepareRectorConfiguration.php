@@ -20,6 +20,8 @@ final readonly class PrepareRectorConfiguration implements Change
     public function decide(Context $context): callable|array|null
     {
         $old = $context->tryReadFile(self::FILE);
+
+        /** @var string $new */
         $new = $old ?? file_get_contents(dirname(self::FILE, 2) . '/files/' . self::FILE);
 
         $phpSet = $this->getPhpSet($context);
@@ -27,6 +29,7 @@ final readonly class PrepareRectorConfiguration implements Change
             return null;
         }
 
+        /** @var string $new */
         $new = preg_replace(
             '/->withPhpSets\([^()]*\)/',
             "->withPhpSets($phpSet: true)",

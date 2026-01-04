@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ddc9f1c869f333a0d23a42df50694d54",
+    "content-hash": "1a867347dfe573e8e79ad96ccb682876",
     "packages": [
         {
             "name": "composer/semver",
@@ -881,12 +881,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/vjik/scaffolder.git",
-                "reference": "8b1088399dda5039d7503f0202b332313af7e190"
+                "reference": "150b69c109a760fb21e9bfc371ff7bbbf7f841e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vjik/scaffolder/zipball/8b1088399dda5039d7503f0202b332313af7e190",
-                "reference": "8b1088399dda5039d7503f0202b332313af7e190",
+                "url": "https://api.github.com/repos/vjik/scaffolder/zipball/150b69c109a760fb21e9bfc371ff7bbbf7f841e1",
+                "reference": "150b69c109a760fb21e9bfc371ff7bbbf7f841e1",
                 "shasum": ""
             },
             "require": {
@@ -921,7 +921,7 @@
                 "issues": "https://github.com/vjik/scaffolder/issues",
                 "source": "https://github.com/vjik/scaffolder/tree/master"
             },
-            "time": "2026-01-04T08:58:30+00:00"
+            "time": "2026-01-04T09:23:19+00:00"
         },
         {
             "name": "yiisoft/strings",
