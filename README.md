@@ -6,6 +6,23 @@
     <br>
 </div>
 
+PHPTG Scaffolder is a tool for setting up project structure and configuration
+for PHP packages in the [PHPTG](https://github.com/phptg). It is based on
+[vjik/scaffolder](https://github.com/vjik/scaffolder) and automatically creates and configures essential
+project files including `composer.json`, GitHub Actions workflows, configuration files, and documentation structure.
+
+## General Usage
+
+Run the scaffolder using Docker from your project directory:
+
+```bash
+docker run \
+  --volume .:/project \
+  --user $(id -u):$(id -g) \
+  --interactive --tty --rm --init \
+  ghcr.io/phptg/scaffolder:latest
+```
+
 ## Documentation
 
 If you have any questions or problems with this package, use [author telegram chat](https://t.me/predvoditelev_chat) for communication.
