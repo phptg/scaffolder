@@ -31,9 +31,10 @@ final readonly class PrepareGitHubWorkflowBuild implements Change
                 $context->getFact(MinorPhpVersionRange::class),
             ),
         );
-
-        /** @var string $new */
-        $new = preg_replace('/^(\s*php:\n)(?:\s*-\s*".*"\n)+/m', "$1$phpMatrix\n", $new, 1);
+        if ($phpMatrix !== '') {
+            /** @var string $new */
+            $new = preg_replace('/^(\s*php:\n)(?:\s*-\s*".*"\n)+/m', "$1$phpMatrix\n", $new, 1);
+        }
 
         if ($original === $new) {
             return null;

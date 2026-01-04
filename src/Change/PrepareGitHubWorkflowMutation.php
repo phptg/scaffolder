@@ -25,14 +25,11 @@ final readonly class PrepareGitHubWorkflowMutation implements Change
         $new = $original ?? file_get_contents(dirname(__DIR__, 2) . '/files/' . self::FILE);
 
         $phpVersion = $context->getFact(HighestMinorPhpVersion::class);
-        if ($phpVersion === MinorPhpVersion::UNKNOWN) {
-            return null;
+        if ($phpVersion !== MinorPhpVersion::UNKNOWN) {
+            $phpMatrix = '          - "' . $phpVersion->value . '"';
+            /** @var string $new */
+            $new = preg_replace('/^(\s*php:\n)(?:\s*-\s*".*"\n)+/m', "$1$phpMatrix\n", $new, 1);
         }
-
-        $phpMatrix = '          - "' . $phpVersion->value . '"';
-
-        /** @var string $new */
-        $new = preg_replace('/^(\s*php:\n)(?:\s*-\s*".*"\n)+/m', "$1$phpMatrix\n", $new, 1);
 
         if ($original === $new) {
             return null;
