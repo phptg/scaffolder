@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Phptg\Scaffolder\Change\PrepareChangelog;
 use Phptg\Scaffolder\Change\PrepareGitignore;
 use Phptg\Scaffolder\Change\PrepareReadme;
 use Phptg\Scaffolder\Change\PrepareRectorConfiguration;
@@ -90,6 +91,7 @@ return [
         new CopyFile($files . '/logo.png', 'logo.png'),
     ],
     'docs-internals' => new CopyFile($files . '/docs/internals.md', 'docs/internals.md'),
+    new PrepareChangelog(),
     new CopyFile($files . '/tools/.gitignore', 'tools/.gitignore'),
     new ChangeIf(
         new CopyFileIfNotExists($files . '/phpunit.xml.dist', 'phpunit.xml.dist'),
