@@ -43,6 +43,7 @@
         }
     },
     "scripts": {
+        "cs-fix": "php-cs-fixer fix",
         "phpstan": "phpstan analyse -c phpstan.neon",
         "rector": "rector"
     }

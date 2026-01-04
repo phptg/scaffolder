@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Phptg\Scaffolder\Change\PrepareGitignore;
 use Phptg\Scaffolder\Change\PrepareReadme;
 use Phptg\Scaffolder\Change\PrepareRectorConfiguration;
+use Phptg\Scaffolder\Fact\UsePhpCsFixer;
 use Phptg\Scaffolder\Fact\UsePhpStan;
 use Phptg\Scaffolder\Fact\UsePhpUnit;
 use Phptg\Scaffolder\Fact\UsePsalm;
@@ -58,8 +59,13 @@ return [
                 $new['require-dev']['phpunit/phpunit'] ??= '^11.5.46';
             }
 
+            // PHP CS Fixer
+            if ($context->getFact(UsePhpCsFixer::class)) {
+                $new['scripts']['cs-fix'] ??= 'php-cs-fixer fix';
+            }
+
             return $new;
-        }
+        },
     ),
     new PrepareGitignore(),
     new CopyFile($files . '/runtime/.gitignore', 'runtime/.gitignore'),
@@ -88,5 +94,12 @@ return [
     new ChangeIf(
         new CopyFileIfNotExists($files . '/phpstan.neon', 'phpstan.neon'),
         UsePhpStan::class,
+    ),
+    new ChangeIf(
+        [
+            new CopyFileIfNotExists($files . '/tools/php-cs-fixer/composer.json', 'tools/php-cs-fixer/composer.json'),
+            new CopyFileIfNotExists($files . '/.php-cs-fixer.dist.php', '.php-cs-fixer.dist.php'),
+        ],
+        UsePhpCsFixer::class,
     ),
 ];
