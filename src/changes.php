@@ -120,4 +120,5 @@ return [
         ],
         UseComposerDependencyAnalyser::class,
     ),
+    new CopyFileIfNotExists($files . '/.gitattributes', '.gitattributes'),
 ];
