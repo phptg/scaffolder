@@ -13,11 +13,14 @@ use Phptg\Scaffolder\Fact\UsePsalm;
 use Vjik\Scaffolder\Change\ChangeIf;
 use Vjik\Scaffolder\Change\CopyFile;
 use Vjik\Scaffolder\Change\CopyFileIfNotExists;
+use Vjik\Scaffolder\Change\EnsureDirectoryWithGitkeep;
 use Vjik\Scaffolder\Change\PrepareComposerJson;
 use Vjik\Scaffolder\Change\WriteLicense\Bsd3ClauseLicense;
 use Vjik\Scaffolder\Change\WriteLicense\WriteLicense;
 use Vjik\Scaffolder\Context;
 use Vjik\Scaffolder\Fact\PackageProject;
+use Vjik\Scaffolder\Fact\SourceDirectory;
+use Vjik\Scaffolder\Fact\TestsDirectory;
 
 $files = dirname(__DIR__) . '/files';
 
@@ -73,6 +76,8 @@ return [
             return $new;
         },
     ),
+    new EnsureDirectoryWithGitkeep(SourceDirectory::class),
+    new EnsureDirectoryWithGitkeep(TestsDirectory::class),
     new PrepareGitignore(),
     new CopyFile($files . '/runtime/.gitignore', 'runtime/.gitignore'),
     new WriteLicense(
