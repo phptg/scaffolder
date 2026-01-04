@@ -12,4 +12,5 @@ return [
     'use-phpunit' => false,
     'use-psalm' => false,
     'use-phpstan' => true,
+    'use-infection' => false,
 ];

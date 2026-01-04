@@ -8,6 +8,7 @@ use Phptg\Scaffolder\Change\PrepareGitignore;
 use Phptg\Scaffolder\Change\PrepareReadme;
 use Phptg\Scaffolder\Change\PrepareRectorConfiguration;
 use Phptg\Scaffolder\Fact\UseComposerDependencyAnalyser;
+use Phptg\Scaffolder\Fact\UseInfection;
 use Phptg\Scaffolder\Fact\UsePhpCsFixer;
 use Phptg\Scaffolder\Fact\UsePhpStan;
 use Phptg\Scaffolder\Fact\UsePhpUnit;
@@ -75,6 +76,11 @@ return [
                 $new['scripts']['dependency-analyser'] ??= 'composer-dependency-analyser';
             }
 
+            // Infection
+            if ($context->getFact(UseInfection::class)) {
+                $new['scripts']['infection'] ??= 'infection --threads=max';
+            }
+
             return $new;
         },
     ),
@@ -122,6 +128,13 @@ return [
             new CopyFileIfNotExists($files . '/composer-dependency-analyser.php', 'composer-dependency-analyser.php'),
         ],
         UseComposerDependencyAnalyser::class,
+    ),
+    new ChangeIf(
+        [
+            new CopyFileIfNotExists($files . '/tools/infection/composer.json', 'tools/infection/composer.json'),
+            new CopyFileIfNotExists($files . '/infection.json.dist', 'infection.json.dist'),
+        ],
+        UseInfection::class,
     ),
     new CopyFileIfNotExists($files . '/.gitattributes', '.gitattributes'),
 ];

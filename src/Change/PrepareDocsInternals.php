@@ -12,7 +12,6 @@ use Phptg\Scaffolder\Fact\UsePsalm;
 use Vjik\Scaffolder\Change;
 use Vjik\Scaffolder\Cli;
 use Vjik\Scaffolder\Context;
-use Vjik\Scaffolder\Fact\Title;
 
 use function sprintf;
 
