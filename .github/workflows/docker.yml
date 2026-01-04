@@ -3,10 +3,14 @@ name: Docker Image
 on:
   workflow_dispatch: ~
   workflow_run:
-    workflows: [ "Composer Dependency Analyser", "PHPStan" ]
+    workflows: [ "Checks" ]
     branches: [ "master" ]
     types:
       - completed
+
+permissions:
+  contents: read
+  packages: write
 
 concurrency:
   group: docker-image-build

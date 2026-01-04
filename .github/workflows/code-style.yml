@@ -1,6 +1,7 @@
 name: Code Style
 
-on: [ pull_request_target ]
+on:
+  pull_request_target:
 
 jobs:
   php-cs-fixer:

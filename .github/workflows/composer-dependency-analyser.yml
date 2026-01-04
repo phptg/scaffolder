@@ -1,9 +1,8 @@
 name: Composer Dependency Analyser
 
 on:
+  workflow_call:
   pull_request:
-  push:
-    branches: [ 'master' ]
 
 jobs:
   composer-require-checker:

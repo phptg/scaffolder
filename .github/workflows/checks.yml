@@ -1,0 +1,13 @@
+name: Checks
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  composer-dependency-analyser:
+    uses: ./.github/workflows/composer-dependency-analyser.yml
+
+  phpstan:
+    uses: ./.github/workflows/phpstan.yml
