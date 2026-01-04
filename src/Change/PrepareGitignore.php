@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Phptg\Scaffolder\Change;
 
+use Phptg\Scaffolder\Fact\UsePhpUnit;
 use Vjik\Scaffolder\Change;
 use Vjik\Scaffolder\Cli;
 use Vjik\Scaffolder\Context;
@@ -32,13 +33,21 @@ final readonly class PrepareGitignore implements Change
 
     private function createNew(Context $context): string
     {
-        $composerLock = $context->getFact(PackageType::class) === 'library' ? "\n/composer.lock" : '';
-        return <<<GITIGNORE
-            # Composer
-            /vendor/$composerLock
+        $lines = [
+            '# Composer',
+            '/vendor/',
+        ];
+        if ($context->getFact(PackageType::class) === 'library') {
+            $lines[] = '/composer.lock';
+        }
+        $lines[] = '';
 
-            # PHPUnit
-            /phpunit.xml
-            GITIGNORE;
+        if ($context->getFact(UsePhpUnit::class)) {
+            $lines[] = '# PHPUnit';
+            $lines[] = '/phpunit.xml';
+            $lines[] = '';
+        }
+
+        return implode("\n", $lines);
     }
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Phptg\Scaffolder\Change\PrepareGitignore;
 use Phptg\Scaffolder\Change\PrepareReadme;
 use Phptg\Scaffolder\Change\PrepareRectorConfiguration;
+use Phptg\Scaffolder\Fact\UsePhpUnit;
 use Phptg\Scaffolder\Fact\UsePsalm;
 use Vjik\Scaffolder\Change\ChangeIf;
 use Vjik\Scaffolder\Change\CopyFile;
@@ -46,7 +47,7 @@ return [
             }
 
             // PHPUnit
-            if ($context->getParam('phpunit', true)) {
+            if ($context->getFact(UsePhpUnit::class)) {
                 $new['require-dev']['phpunit/phpunit'] ??= '^11.5.46';
             }
         }
@@ -63,8 +64,11 @@ return [
         new CopyFile($files . '/logo.png', 'logo.png'),
     ],
     'docs-internals' => new CopyFile($files . '/docs/internals.md', 'docs/internals.md'),
-    'phpunit-configuration' => new CopyFileIfNotExists($files . '/phpunit.xml.dist', 'phpunit.xml.dist'),
     new CopyFile($files . '/tools/.gitignore', 'tools/.gitignore'),
+    new ChangeIf(
+        new CopyFileIfNotExists($files . '/phpunit.xml.dist', 'phpunit.xml.dist'),
+        UsePhpUnit::class,
+    ),
     new ChangeIf(
         [
             new CopyFileIfNotExists($files . '/tools/psalm/composer.json', 'tools/psalm/composer.json'),
