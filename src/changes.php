@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use Phptg\Scaffolder\Change\PrepareChangelog;
+use Phptg\Scaffolder\Change\PrepareDocsInternals;
 use Phptg\Scaffolder\Change\PrepareGitignore;
 use Phptg\Scaffolder\Change\PrepareReadme;
 use Phptg\Scaffolder\Change\PrepareRectorConfiguration;
@@ -90,7 +91,7 @@ return [
         new PrepareReadme(),
         new CopyFile($files . '/logo.png', 'logo.png'),
     ],
-    'docs-internals' => new CopyFile($files . '/docs/internals.md', 'docs/internals.md'),
+    'docs-internals' => new PrepareDocsInternals(),
     new PrepareChangelog(),
     new CopyFile($files . '/tools/.gitignore', 'tools/.gitignore'),
     new ChangeIf(
