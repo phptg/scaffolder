@@ -14,7 +14,7 @@ use function sprintf;
 
 final readonly class PrepareGitignore implements Change
 {
-    private const FILE = '.gitignore';
+    private const string FILE = '.gitignore';
 
     public function decide(Context $context): callable|array|null
     {

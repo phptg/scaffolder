@@ -15,7 +15,7 @@ use function sprintf;
 
 final readonly class PrepareGitHubWorkflowComposerDependencyAnalyser implements Change
 {
-    private const FILE = '.github/workflows/composer-dependency-analyser.yml';
+    private const string FILE = '.github/workflows/composer-dependency-analyser.yml';
 
     public function decide(Context $context): callable|array|null
     {

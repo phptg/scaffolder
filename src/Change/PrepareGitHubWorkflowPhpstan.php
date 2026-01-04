@@ -15,7 +15,7 @@ use function sprintf;
 
 final readonly class PrepareGitHubWorkflowPhpstan implements Change
 {
-    private const FILE = '.github/workflows/phpstan.yml';
+    private const string FILE = '.github/workflows/phpstan.yml';
 
     public function decide(Context $context): callable|array|null
     {

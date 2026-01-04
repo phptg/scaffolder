@@ -16,7 +16,7 @@ use function sprintf;
 
 final readonly class PrepareDocsInternals implements Change
 {
-    private const FILE = 'docs/internals.md';
+    private const string FILE = 'docs/internals.md';
 
     public function decide(Context $context): callable|array|null
     {

@@ -18,7 +18,7 @@ use function sprintf;
 
 final readonly class PrepareReadme implements Change
 {
-    private const FILE = 'README.md';
+    private const string FILE = 'README.md';
 
     public function decide(Context $context): callable|array|null
     {

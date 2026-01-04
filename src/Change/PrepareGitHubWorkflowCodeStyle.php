@@ -15,7 +15,7 @@ use function sprintf;
 
 final readonly class PrepareGitHubWorkflowCodeStyle implements Change
 {
-    private const FILE = '.github/workflows/code-style.yml';
+    private const string FILE = '.github/workflows/code-style.yml';
 
     public function decide(Context $context): callable|array|null
     {
