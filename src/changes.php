@@ -101,7 +101,7 @@ return [
         new CopyFile($files . '/logo.png', 'logo.png'),
     ],
     'docs-internals' => new PrepareDocsInternals(),
-    new PrepareChangelog(),
+    'changelog' => new PrepareChangelog(),
     new CopyFile($files . '/tools/.gitignore', 'tools/.gitignore'),
     new ChangeIf(
         [

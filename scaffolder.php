@@ -5,6 +5,7 @@ declare(strict_types=1);
 return [
     'title' => 'PHPTG Scaffolder',
     'disable' => [
+        'changelog',
         'docs-internals',
         'tests-directory',
     ],

@@ -5,7 +5,7 @@ IMAGE_NAME := ghcr.io/phptg/scaffolder
 build: ## Build the docker image
 	docker build -t $(IMAGE_NAME) .
 
-run:
+run: ## Run tool via docker
 	docker run \
       --volume .:/project \
       --user $(shell id -u):$(shell id -g) \
