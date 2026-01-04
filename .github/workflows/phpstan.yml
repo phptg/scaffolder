@@ -1,13 +1,13 @@
+name: PHPStan
+
 on:
   pull_request:
   push:
     branches:
       - master
 
-name: static analysis
-
 jobs:
-  psalm:
+  phpstan:
     name: PHP ${{ matrix.php }}-${{ matrix.os }}
 
     runs-on: ${{ matrix.os }}
