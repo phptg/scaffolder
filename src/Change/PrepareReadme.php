@@ -22,10 +22,10 @@ final readonly class PrepareReadme implements Change
 
     public function decide(Context $context): callable|array|null
     {
-        $old = $context->tryReadFile(self::FILE);
-        $new = $old ?? $this->createNew($context);
+        $original = $context->tryReadFile(self::FILE);
+        $new = $original ?? $this->createNew($context);
 
-        if ($old === $new) {
+        if ($original === $new) {
             return null;
         }
 
