@@ -9,4 +9,5 @@ return [
     ],
     'prepare-composer-autoload-dev' => false,
     'phpunit' => false,
+    'use-psalm' => false,
 ];

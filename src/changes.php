@@ -5,6 +5,8 @@ declare(strict_types=1);
 use Phptg\Scaffolder\Change\PrepareGitignore;
 use Phptg\Scaffolder\Change\PrepareReadme;
 use Phptg\Scaffolder\Change\PrepareRectorConfiguration;
+use Phptg\Scaffolder\Fact\UsePsalm;
+use Vjik\Scaffolder\Change\ChangeIf;
 use Vjik\Scaffolder\Change\CopyFile;
 use Vjik\Scaffolder\Change\CopyFileIfNotExists;
 use Vjik\Scaffolder\Change\PrepareComposerJson;
@@ -25,9 +27,23 @@ return [
                 'source' => "https://github.com/phptg/$project",
             ];
 
+            // Composer bin plugin
+            $new['require-dev']['bamarni/composer-bin-plugin'] ??= '^1.8.3';
+            $new['extra']['bamarni-bin'] = [
+                'bin-links' => true,
+                'forward-command' => true,
+                'target-directory' => 'tools',
+            ];
+            $new['config']['allow-plugins']['bamarni/composer-bin-plugin'] = true;
+
             // Rector
             $new['require-dev']['rector/rector'] ??= '^2.3.0';
             $new['scripts']['rector'] = 'rector';
+
+            // Psalm
+            if ($context->getFact(UsePsalm::class)) {
+                $new['scripts']['psalm'] = 'psalm';
+            }
 
             // PHPUnit
             if ($context->getParam('phpunit', true)) {
@@ -47,5 +63,13 @@ return [
         new CopyFile($files . '/logo.png', 'logo.png'),
     ],
     'docs-internals' => new CopyFile($files . '/docs/internals.md', 'docs/internals.md'),
-    'phpunit-configuration' => new CopyFileIfNotExists($files . '/phpunit.xml.dist', 'phpunit.xml.dist')
+    'phpunit-configuration' => new CopyFileIfNotExists($files . '/phpunit.xml.dist', 'phpunit.xml.dist'),
+    new CopyFile($files . '/tools/.gitignore', 'tools/.gitignore'),
+    new ChangeIf(
+        [
+            new CopyFileIfNotExists($files . '/tools/psalm/composer.json', 'tools/psalm/composer.json'),
+            new CopyFileIfNotExists($files . '/psalm.xml', 'psalm.xml'),
+        ],
+        UsePsalm::class,
+    ),
 ];

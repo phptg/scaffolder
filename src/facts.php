@@ -2,4 +2,8 @@
 
 declare(strict_types=1);
 
-return [];
+use Phptg\Scaffolder\Fact;
+
+return [
+    Fact\UsePsalm::class,
+];

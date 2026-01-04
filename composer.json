@@ -19,6 +19,7 @@
         "vjik/scaffolder": "dev-master"
     },
     "require-dev": {
+        "bamarni/composer-bin-plugin": "^1.8.3",
         "rector/rector": "^2.3"
     },
     "autoload": {
@@ -27,8 +28,18 @@
         }
     },
     "config": {
+        "allow-plugins": {
+            "bamarni/composer-bin-plugin": true
+        },
         "bump-after-update": true,
         "sort-packages": true
+    },
+    "extra": {
+        "bamarni-bin": {
+            "bin-links": true,
+            "forward-command": true,
+            "target-directory": "tools"
+        }
     },
     "scripts": {
         "rector": "rector"

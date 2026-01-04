@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0fc0f69a7d6effea9fbd844f9b470cd4",
+    "content-hash": "ddc9f1c869f333a0d23a42df50694d54",
     "packages": [
         {
             "name": "composer/semver",
@@ -881,12 +881,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/vjik/scaffolder.git",
-                "reference": "ae712e03e9149286d6290491a71ed4eee1e75b7b"
+                "reference": "8b1088399dda5039d7503f0202b332313af7e190"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vjik/scaffolder/zipball/ae712e03e9149286d6290491a71ed4eee1e75b7b",
-                "reference": "ae712e03e9149286d6290491a71ed4eee1e75b7b",
+                "url": "https://api.github.com/repos/vjik/scaffolder/zipball/8b1088399dda5039d7503f0202b332313af7e190",
+                "reference": "8b1088399dda5039d7503f0202b332313af7e190",
                 "shasum": ""
             },
             "require": {
@@ -921,7 +921,7 @@
                 "issues": "https://github.com/vjik/scaffolder/issues",
                 "source": "https://github.com/vjik/scaffolder/tree/master"
             },
-            "time": "2026-01-04T08:26:45+00:00"
+            "time": "2026-01-04T08:58:30+00:00"
         },
         {
             "name": "yiisoft/strings",
@@ -995,6 +995,63 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "bamarni/composer-bin-plugin",
+            "version": "1.8.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bamarni/composer-bin-plugin.git",
+                "reference": "e7ef9e012667327516c24e5fad9903a3bc91389d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bamarni/composer-bin-plugin/zipball/e7ef9e012667327516c24e5fad9903a3bc91389d",
+                "reference": "e7ef9e012667327516c24e5fad9903a3bc91389d",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^2.0",
+                "php": "^7.2.5 || ^8.0"
+            },
+            "require-dev": {
+                "composer/composer": "^2.0",
+                "ext-json": "*",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan": "^1.8",
+                "phpstan/phpstan-phpunit": "^1.1",
+                "phpunit/phpunit": "^8.5 || ^9.6 || ^10.0",
+                "symfony/console": "^2.8.52 || ^3.4.35 || ^4.4 || ^5.0 || ^6.0",
+                "symfony/finder": "^2.8.52 || ^3.4.35 || ^4.4 || ^5.0 || ^6.0",
+                "symfony/process": "^2.8.52 || ^3.4.35 || ^4.4 || ^5.0 || ^6.0"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Bamarni\\Composer\\Bin\\BamarniBinPlugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Bamarni\\Composer\\Bin\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "No conflicts for your bin dependencies",
+            "keywords": [
+                "composer",
+                "conflict",
+                "dependency",
+                "executable",
+                "isolation",
+                "tool"
+            ],
+            "support": {
+                "issues": "https://github.com/bamarni/composer-bin-plugin/issues",
+                "source": "https://github.com/bamarni/composer-bin-plugin/tree/1.8.3"
+            },
+            "time": "2025-11-24T19:20:55+00:00"
+        },
         {
             "name": "phpstan/phpstan",
             "version": "2.1.33",
