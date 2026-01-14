@@ -32,9 +32,8 @@ final readonly class PrepareReadme implements Change
             $new = $original;
             if ($context->getFact(UpdateReadmeBadges::class)) {
                 $badges = $this->createBadges($context);
-                $pattern = '~(?:^\[!\[.*\]\(.*\)\]\(.*\)\s*$\n)+~m';
-                $replaced = preg_replace($pattern, "$badges\n\n", $new, limit: 1);
-                $new = $replaced ?? $new;
+                /** @var string $new */
+                $new = preg_replace('~(?:^\[!\[.*\]\(.*\)\]\(.*\)\s*$\n)+~m', "$badges\n\n", $new, limit: 1);
             }
         }
 
