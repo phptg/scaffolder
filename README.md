@@ -6,12 +6,12 @@
     <br>
 </div>
 
+[![Static analysis](https://github.com/phptg/scaffolder/actions/workflows/phpstan.yml/badge.svg?branch=master)](https://github.com/phptg/scaffolder/actions/workflows/phpstan.yml?query=branch%3Amaster)
+
 PHPTG Scaffolder is a tool for setting up project structure and configuration
 for PHP packages in the [PHPTG](https://github.com/phptg). It is based on
 [vjik/scaffolder](https://github.com/vjik/scaffolder) and automatically creates and configures essential
 project files including `composer.json`, GitHub Actions workflows, configuration files, and documentation structure.
-
-[![Static analysis](https://github.com/phptg/scaffolder/actions/workflows/phpstan.yml/badge.svg?branch=master)](https://github.com/phptg/scaffolder/actions/workflows/phpstan.yml?query=branch%3Amaster)
 
 ## General Usage
 
