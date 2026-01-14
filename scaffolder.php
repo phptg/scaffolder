@@ -14,4 +14,6 @@ return [
     'use-psalm' => false,
     'use-phpstan' => true,
     'use-infection' => false,
+    'badge-packagist-version' => false,
+    'badge-packagist-downloads' => false,
 ];
