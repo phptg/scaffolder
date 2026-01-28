@@ -13,6 +13,14 @@ for PHP packages in the [PHPTG](https://github.com/phptg). It is based on
 [vjik/scaffolder](https://github.com/vjik/scaffolder) and automatically creates and configures essential
 project files including `composer.json`, GitHub Actions workflows, configuration files, and documentation structure.
 
+❤️ **Support the project**
+
+This project is developed and maintained by [Sergei Predvoditelev](https://github.com/vjik).
+Community support helps keep the project actively developed and maintained.
+
+- [Boosty](https://boosty.to/vjik)
+- [CloudTips](https://pay.cloudtips.ru/p/192ce69b)
+
 ## General Usage
 
 Run the scaffolder using Docker from your project directory:
