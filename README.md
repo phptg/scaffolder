@@ -14,12 +14,13 @@ for PHP packages in the [PHPTG](https://github.com/phptg). It is based on
 project files including `composer.json`, GitHub Actions workflows, configuration files, and documentation structure.
 
 > [!IMPORTANT]
-> **❤️ Support the project**
 > This project is developed and maintained by [Sergei Predvoditelev](https://github.com/vjik).
-> Community support helps keep the project actively developed and maintained.
+> Community support helps keep the project actively developed and well maintained.
 > 
 > - [Boosty](https://boosty.to/vjik)
 > - [CloudTips](https://pay.cloudtips.ru/p/192ce69b)
+> 
+> Thank you for your support ❤️
 
 ## General Usage
 
