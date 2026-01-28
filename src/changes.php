@@ -49,7 +49,7 @@ return [
                 [
                     'type' => 'boosty',
                     'url' => 'https://boosty.to/vjik',
-                ]
+                ],
             ];
 
             // Composer bin plugin
