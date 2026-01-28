@@ -41,6 +41,16 @@ return [
                 'chat' => 'https://t.me/predvoditelev_chat',
                 'source' => "https://github.com/phptg/$project",
             ];
+            $new['funding'] = [
+                [
+                    'type' => 'cloudtips',
+                    'url' => 'https://pay.cloudtips.ru/p/192ce69b',
+                ],
+                [
+                    'type' => 'boosty',
+                    'url' => 'https://boosty.to/vjik',
+                ],
+            ];
 
             // Composer bin plugin
             $new['require-dev']['bamarni/composer-bin-plugin'] ??= '^1.8.3';

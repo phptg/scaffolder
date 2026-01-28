@@ -14,6 +14,16 @@
         "chat": "https://t.me/predvoditelev_chat",
         "source": "https://github.com/phptg/scaffolder"
     },
+    "funding": [
+        {
+            "type": "cloudtips",
+            "url": "https://pay.cloudtips.ru/p/192ce69b"
+        },
+        {
+            "type": "boosty",
+            "url": "https://boosty.to/vjik"
+        }
+    ],
     "require": {
         "php": "~8.4.0",
         "ext-filter": "*",
