@@ -62,7 +62,6 @@ return [
             $new['config']['allow-plugins']['bamarni/composer-bin-plugin'] = true;
 
             // Rector
-            $new['require-dev']['rector/rector'] ??= '^2.3.0';
             $new['scripts']['rector'] = 'rector';
 
             // PHP CS Fixer
@@ -105,6 +104,7 @@ return [
         new Bsd3ClauseLicense('Sergei Predvoditelev'),
     ),
     new CopyFile($files . '/.editorconfig', '.editorconfig'),
+    new CopyFileIfNotExists($files . '/tools/rector/composer.json', 'tools/rector/composer.json'),
     new PrepareRectorConfiguration(),
     'readme' => [
         new PrepareReadme(),
