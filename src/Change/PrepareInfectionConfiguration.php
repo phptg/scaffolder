@@ -29,9 +29,19 @@ final readonly class PrepareInfectionConfiguration implements Change
     {
         $originalContent = $context->tryReadFile(self::FILE);
 
-        $original = $new = $originalContent === null
+        /**
+         * @var array{
+         *     mutators?: array<mixed>,
+         *     source?: array<mixed>,
+         *     logs?: array<mixed>,
+         *     tmpDir?: string,
+         *     ...
+         * } $original
+         */
+        $original = $originalContent === null
             ? []
             : json_decode($originalContent, true, flags: JSON_THROW_ON_ERROR);
+        $new = $original;
 
         $sourceDirectory = rtrim($context->getFact(SourceDirectory::class), '/');
         $new['source'] = ['directories' => [$sourceDirectory]];
