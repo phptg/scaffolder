@@ -11,6 +11,7 @@ use Phptg\Scaffolder\Change\PrepareGitHubWorkflowMutation;
 use Phptg\Scaffolder\Change\PrepareGitHubWorkflowPhpstan;
 use Phptg\Scaffolder\Change\PrepareGitHubWorkflowPsalm;
 use Phptg\Scaffolder\Change\PrepareGitignore;
+use Phptg\Scaffolder\Change\PrepareInfectionConfiguration;
 use Phptg\Scaffolder\Change\PrepareReadme;
 use Phptg\Scaffolder\Change\PrepareRectorConfiguration;
 use Phptg\Scaffolder\Fact\UseComposerDependencyAnalyser;
@@ -149,7 +150,7 @@ return [
     new ChangeIf(
         [
             new CopyFileIfNotExists($files . '/tools/infection/composer.json', 'tools/infection/composer.json'),
-            new CopyFileIfNotExists($files . '/infection.json.dist', 'infection.json.dist'),
+            new PrepareInfectionConfiguration(),
             new PrepareGitHubWorkflowMutation(),
         ],
         UseInfection::class,
