@@ -120,7 +120,7 @@ final readonly class PrepareReadme implements Change
         }
 
         if ($badgesConfig->build) {
-            $badges[] = "[![Build status](https://github.com/phptg/$packageProject/actions/workflows/build.yml/badge.svg)](https://github.com/phptg/$packageProject/actions/workflows/build.yml)";
+            $badges[] = "[![Build status](https://github.com/phptg/$packageProject/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/phptg/$packageProject/actions/workflows/build.yml?query=branch%3Amaster)";
         }
 
         if ($badgesConfig->coverage) {
