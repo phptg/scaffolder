@@ -155,5 +155,6 @@ return [
         ],
         UseInfection::class,
     ),
+    new CopyFile($files . '/.github/workflows/zizmor.yml', '.github/workflows/zizmor.yml'),
     new CopyFileIfNotExists($files . '/.gitattributes', '.gitattributes'),
 ];
