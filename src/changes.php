@@ -153,7 +153,7 @@ return [
             new PrepareInfectionConfiguration(),
             new PrepareGitHubWorkflowMutation(),
         ],
-        UseInfection::class
+        UseInfection::class,
     ),
     'dependabot.yaml' => new CopyFile($files . '/.github/dependabot.yaml', '.github/dependabot.yaml'),
     new CopyFile($files . '/.github/workflows/zizmor.yml', '.github/workflows/zizmor.yml'),
