@@ -8,6 +8,7 @@ return [
         'changelog',
         'docs-internals',
         'tests-directory',
+        'dependabot.yaml',
     ],
     'prepare-composer-autoload-dev' => false,
     'use-phpunit' => false,
