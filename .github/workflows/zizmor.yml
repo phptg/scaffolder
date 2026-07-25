@@ -6,6 +6,8 @@ on:
     paths: &paths
       - '.github/**/*.yml'
       - '.github/**/*.yaml'
+      - 'files/.github/**.yaml'
+      - 'files/.github/**.yml'
   pull_request:
     paths: *paths
 
